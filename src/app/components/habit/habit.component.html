@@ -1,6 +1,11 @@
-<h1>Habit Tracker</h1>
-<ul>
-    <li *ngFor="let habit of HABITS">
-        {{habit.name}}
-    </li>
-</ul>
+<main class="container">
+    <h1>Habit Tracker</h1>
+    <ul class="list-group">
+        <li *ngFor="let habit of HABITS" class="list-group-item">
+            <h3 class="list-group-heading"><i class="bi bi-check-square-fill"></i> {{habit.name}}</h3>
+            <p>Category: {{habit.category}}</p>
+            <p>{{habit.description}}</p>
+        </li>
+    </ul>
+</main>
+
