@@ -18,4 +18,9 @@ export class HabitService {
     return this.http.get(`${this.serverUrl}/habits`);
   }
 
+  // POST: add new object
+  addHabit(habit: any) {
+    return this.http.post(`${this.serverUrl}/habits`, habit);
+  }
+
 }
