@@ -4,7 +4,7 @@
         <section class="col-lg-6">
             <ul class="list-group">
                 <li *ngFor="let habit of HABITS" class="list-group-item">
-                    <h4 class="list-group-item-heading">{{habit.name}}</h4>
+                    <h4 class="list-group-item-heading" (click)="selectHabit(habit)">{{habit.name}}</h4>
                     <p class="badge bg-primary">{{habit.category}}</p>
                     <p>{{habit.description}}</p>
                 </li>
@@ -24,7 +24,9 @@
                     <label for="description" class="control-label">Description:</label>
                     <textarea [(ngModel)]="description" name="description"></textarea>
                 </fieldset>
+                <input [(ngModel)]="_id" name="_id" />
                 <button class="btn btn-primary offset-6" (click)="addHabit()">Save</button>
+                <button class="btn btn-danger" *ngIf="_id" (click)="deleteHabit(_id)">Delete</button>
             </form>
         </section>
     </div>

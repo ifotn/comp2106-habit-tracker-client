@@ -19,3 +19,11 @@ textarea {
 input { 
     width: 500px;
 }
+
+.list-group-item-heading {
+    cursor: pointer;
+}
+
+.list-group-item-heading:hover {
+    text-decoration: underline;
+}

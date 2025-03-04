@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { HabitService } from '../../services/habit.service';
 import { FormsModule } from '@angular/forms';
 
@@ -12,7 +12,7 @@ export class Habit {
 
 @Component({
   selector: 'app-habit',
-  imports: [NgFor, FormsModule],
+  imports: [NgFor, FormsModule, NgIf],
   templateUrl: './habit.component.html',
   styleUrl: './habit.component.css'
 })
@@ -57,9 +57,26 @@ export class HabitComponent implements OnInit {
   }
 
   clearForm(): void {
+    this._id = undefined;
     this.name = undefined;
     this.category = undefined;
     this.description = undefined;
+  }
+
+  selectHabit(habit: Habit): void {
+    this._id = habit._id;
+    this.name = habit.name;
+    this.description = habit.description;
+    this.category = habit.category;
+  }
+
+  deleteHabit(_id: string): void {
+    if (confirm('Are you sure you want to delete this habit?')) {
+      this.habitService.deleteHabit(_id).subscribe(response => {
+        this.getHabits();
+        this.clearForm();
+      });
+    }      
   }
 
   ngOnInit(): void {
