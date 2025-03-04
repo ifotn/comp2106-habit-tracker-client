@@ -79,6 +79,20 @@ export class HabitComponent implements OnInit {
     }      
   }
 
+  updateHabit(): void {
+    let habit = {
+      _id: this._id,
+      name: this.name,
+      category: this.category,
+      description: this.description
+    };
+
+    this.habitService.updateHabit(habit).subscribe(response => {
+      this.getHabits();
+      this.clearForm();
+    });
+  }
+
   ngOnInit(): void {
     this.getHabits();
   }

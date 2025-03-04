@@ -33,4 +33,9 @@ export class HabitService {
     return this.http.delete(`${this.serverUrl}/habits/${_id}`)
   }
 
+  // UPDATE
+  updateHabit(habit: any) {
+    return this.http.put(`${this.serverUrl}/habits/${habit._id}`, habit)
+  }
+
 }

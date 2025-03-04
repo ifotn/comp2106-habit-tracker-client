@@ -24,8 +24,10 @@
                     <label for="description" class="control-label">Description:</label>
                     <textarea [(ngModel)]="description" name="description"></textarea>
                 </fieldset>
-                <input [(ngModel)]="_id" name="_id" />
-                <button class="btn btn-primary offset-6" (click)="addHabit()">Save</button>
+                <input [(ngModel)]="_id" name="_id" type="hidden" />
+                <button class="btn btn-primary offset-6 m-1" (click)="addHabit()" *ngIf="!_id">Save</button>
+                <button class="btn btn-primary offset-6 m-1" (click)="updateHabit()" *ngIf="_id">Save</button>
+                <button class="btn btn-primary m-1" (click)="clearForm()">Reset</button>
                 <button class="btn btn-danger" *ngIf="_id" (click)="deleteHabit(_id)">Delete</button>
             </form>
         </section>
