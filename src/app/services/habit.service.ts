@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,14 @@ export class HabitService {
   serverUrl: string = environment.serverUrl;
 
   // GET: all
-  getHabits() {
-    return this.http.get(`${this.serverUrl}/habits`);
+  getHabits(keyword: string | undefined) {
+    if (keyword) {
+      return this.http.get(`${this.serverUrl}/habits?keyword=${keyword}`);
+    }
+    else {
+      return this.http.get(`${this.serverUrl}/habits`);
+    }
+    
   }
 
   // // GET: one
