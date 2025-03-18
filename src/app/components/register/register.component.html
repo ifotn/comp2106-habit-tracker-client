@@ -1,1 +1,16 @@
 <h1>Register</h1>
+<h5 [ngClass]="messageClass">{{message}}</h5>
+<fieldset>
+    <label>Username:</label>
+    <input [(ngModel)]="username" />
+</fieldset>
+<fieldset>
+    <label>Password:</label>
+    <input type="password" [(ngModel)]="password" />
+</fieldset>
+<fieldset>
+    <label>Confirm:</label>
+    <input type="password" [(ngModel)]="confirm" />
+</fieldset>
+<button class="btn btn-primary offset-2" (click)="register()">Register</button>
+
