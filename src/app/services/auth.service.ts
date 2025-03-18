@@ -15,4 +15,9 @@ export class AuthService {
     // call server api to try to register the new user
     return this.http.post(`${this.serverUrl}/users/register`, user);
   }
+
+  login(user: any) {
+    // call server api to try to authenticate the user
+    return this.http.post(`${this.serverUrl}/users/login`, user, { withCredentials: true });
+  }
 }
