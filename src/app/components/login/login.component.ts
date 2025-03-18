@@ -30,6 +30,10 @@ export class LoginComponent {
       next: response => {
         this.apiResponse = response;
         if (this.apiResponse.token) {
+          // set global username var
+          if (this.username) {
+            this.authService.setUsername(this.username);
+          }      
           this.router.navigate(['/habits']);
         }
       },
