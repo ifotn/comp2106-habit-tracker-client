@@ -33,6 +33,7 @@ export class AuthService {
 
   login(user: any) {
     // call server api to try to authenticate the user
+    // withCredentials: true => pass the HttpCookie with the JWT in it
     return this.http.post(`${this.serverUrl}/users/login`, user, { withCredentials: true });
   }
 

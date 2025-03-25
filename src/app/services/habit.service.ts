@@ -13,7 +13,7 @@ export class HabitService {
   // server API domain used for all calls
   serverUrl: string = environment.serverUrl;
 
-  // GET: all
+  // GET: all.  API method is public so withCredentials: true NOT needed
   getHabits(keyword: string | undefined) {
     if (keyword) {
       return this.http.get(`${this.serverUrl}/habits?keyword=${keyword}`);
@@ -21,7 +21,6 @@ export class HabitService {
     else {
       return this.http.get(`${this.serverUrl}/habits`);
     }
-    
   }
 
   // // GET: one
@@ -29,19 +28,19 @@ export class HabitService {
   //   return this.http.get(`${this.serverUrl}/habits/${_id}`);
   // }
 
-  // POST: add new object
+  // POST: add new object.  needs to pass jwt from http-only cookie as API method is private
   addHabit(habit: any) {
-    return this.http.post(`${this.serverUrl}/habits`, habit);
+    return this.http.post(`${this.serverUrl}/habits`, habit, { withCredentials: true });
   }
 
-  // DELETE
+  // DELETE.  needs to pass jwt from http-only cookie as API method is private
   deleteHabit(_id: string) {
-    return this.http.delete(`${this.serverUrl}/habits/${_id}`)
+    return this.http.delete(`${this.serverUrl}/habits/${_id}`, { withCredentials: true })
   }
 
-  // UPDATE
+  // UPDATE.  needs to pass jwt from http-only cookie as API method is private
   updateHabit(habit: any) {
-    return this.http.put(`${this.serverUrl}/habits/${habit._id}`, habit)
+    return this.http.put(`${this.serverUrl}/habits/${habit._id}`, habit, { withCredentials: true })
   }
 
 }
